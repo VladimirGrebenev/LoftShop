@@ -18,8 +18,15 @@ from django.contrib import admin
 import mainapp.views as mainapp
 
 urlpatterns = [
-    path('', mainapp.main),
-    path('products/', mainapp.products),
-    path('contact/', mainapp.contact),
     path('admin/', admin.site.urls),
+
+    path('', mainapp.main, name='main'),
+    path('products/', mainapp.products, name='products'),
+    path('contact/', mainapp.contact, name='contact'),
+
+    path("products/all", mainapp.products, name="products_all"),
+    path("products/kitchen", mainapp.products, name="products_kitchen"),
+    path("products/bedroom", mainapp.products, name="products_bedroom"),
+    path("products/berloga", mainapp.products, name="products_berloga"),
+
 ]
