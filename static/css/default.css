@@ -364,7 +364,12 @@ ul {
 /*=============== Margins ============= */
  .bmargin {
 	margin-bottom: 0px;
-}
+ }
+
+.pmargin {
+	margin-bottom: 40px;
+ }
+
 .tmargin {
 	margin-top: 0px;
 }
@@ -1216,6 +1221,7 @@ a.read-more.cyan:hover {
 .btn.btn-small {
 	padding: 8px 18px;
 }
+
 .btn.btn-small-2 {
 	padding: 4px 18px;
 }
