@@ -61,7 +61,7 @@
                     {% for product in same_products %}
                         <div class="col-md-4 col-sm-6 bmargin pmargin">
                             <div class="shop-product-holder">
-                                <a href="{{ product.image }}">
+                                <a href="{% url 'products:index' %}">
                                     <div class="image-holder">
                                         <div class="hoverbox"><i class="fa fa-link"></i></div>
                                         <img src="{{ media_url }}{{ product.image }}"

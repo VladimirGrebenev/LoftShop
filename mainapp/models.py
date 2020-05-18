@@ -1,16 +1,23 @@
 from django.db import models
 
+
 # Create your models here.
 
 class ProductCategory(models.Model):
+    '''Категория товара'''
     name = models.CharField(verbose_name="имя категории", max_length=64, unique=True)
     description = models.TextField(verbose_name="описание категории", blank=True)
 
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
 
 class Product(models.Model):
+    '''товар'''
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="имя продукта", max_length=128)
     image = models.ImageField(upload_to="products_images", blank=True)
@@ -21,3 +28,21 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category.name})"
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
+class Contact(models.Model):
+    '''Контакты'''
+    phone = models.CharField(max_length=50, verbose_name="номер телефона")
+    email = models.EmailField(max_length=254, verbose_name="электронная почта")
+    city = models.CharField(max_length=128, default="Москва", verbose_name="город")
+    address = models.CharField(max_length=254, verbose_name="адресс")
+
+    def __str__(self):
+        return f"{self.pk} {self.email}"
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'

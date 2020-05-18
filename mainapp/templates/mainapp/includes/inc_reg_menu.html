@@ -1,0 +1,9 @@
+<ul class="toplist toppadding">
+    {% if user.is_authenticated %}
+    <li class="lineright"><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a></li>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <li class="lineright"><a href="{% url 'auth:logout' %}">Выйти</a></li>
+    {% endif %}
+    <li class="last"><a href="#">Корзина (0)</a></li>
+</ul>
