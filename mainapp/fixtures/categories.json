@@ -1,0 +1,26 @@
+[
+    {
+        "model": "mainapp.productcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Кухни",
+            "description": "Самые крутые кухни в стиле LOFT."
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Спальни",
+            "description": "Самые крутые спальни в стиле LOFT."
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Берлоги",
+            "description": "Самые крутые берлоги для настоящих мужиков!"
+        }
+    }
+]
