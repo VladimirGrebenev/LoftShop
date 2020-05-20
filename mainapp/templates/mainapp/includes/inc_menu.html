@@ -4,9 +4,26 @@
         Главная</a></li>
     <li class="dropdown"><a href="{% url 'products:index' %}"
                             class="{% if request.resolver_match.namespace == 'products' %}active{% endif %}">
-        Каталог</a></li>
+        Каталог</a>
+        <ul class="dropdown-menu five" role="menu">
+            {% for link in links_menu %}
+                <li>
+                    <a href="{% url 'products:category' link.pk %}"
+                       class="{% if request.resolver_match.kwargs.pk == link.pk %}active{% endif %}">
+                        {{ link.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
     <li class="dropdown"><a href="{% url 'contact' %}"
                             class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+
         Контаты</a></li>
 </ul>
-
+<br/>
+<a href="{% url 'basket:view' %}" class="dropdown-toggle pull-right btn btn-red btn-xround fa fa-shopping-cart">
+    <span>
+        {% if basket %}{{ basket|length }}{% endif %}
+    </span>
+</a>

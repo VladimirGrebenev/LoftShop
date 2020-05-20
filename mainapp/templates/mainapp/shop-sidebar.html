@@ -1,6 +1,14 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
+{% block leftregmenu %}
+    {% include 'mainapp/includes/inc_left_reg_menu.html' %}
+{% endblock leftregmenu %}
+
+{% block rightregmenu %}
+    {% include 'mainapp/includes/inc_reg_menu.html' %}
+{% endblock rightregmenu %}
+
 {% block menu %}
     <div id="header">
         <div class="container">
@@ -12,9 +20,7 @@
                 </div>
                 <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                     {% include 'mainapp/includes/inc_menu.html' %}
-                    <br/>
-                    <a href="Sales-and-deals.html" class="dropdown-toggle pull-right btn btn-red btn-xround">Offers
-                        Zone</a></div>
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +82,11 @@
                             <p>{{ product.short_desc }}</p>
                             <h5 class="text-red-4">{{ product.price }}</h5>
                             <br/>
-                            <a class="btn btn-red-4 btn-small" href="#">В корзину</a>
+                            {% if user.is_authenticated %}
+                                <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                            {% else %}
+                                <a class="btn btn-red-4 btn-small" href="{% url 'auth:login' %}">В корзину</a>
+                            {% endif %}
                         </div>
                         <!--end item-->
                     {% endfor %}

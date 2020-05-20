@@ -1,15 +1,15 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
-    {% block leftregmenu %}
-        {% include 'mainapp/includes/inc_left_reg_menu.html' %}
-    {% endblock leftregmenu %}
+{% block leftregmenu %}
+    {% include 'mainapp/includes/inc_left_reg_menu.html' %}
+{% endblock leftregmenu %}
 
-    {% block rightregmenu %}
-        {% include 'mainapp/includes/inc_reg_menu.html' %}
-    {% endblock rightregmenu %}
+{% block rightregmenu %}
+    {% include 'mainapp/includes/inc_reg_menu.html' %}
+{% endblock rightregmenu %}
 
-    {% block menu %}
+{% block menu %}
     <div id="header">
         <div class="container">
             <div class="navbar red-2 navbar-default yamm">
@@ -20,14 +20,13 @@
                 </div>
                 <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                     {% include 'mainapp/includes/inc_menu.html' %}
-                    <br/>
-                    <a href="Sales-and-deals.html" class="dropdown-toggle pull-right btn btn-red btn-xround">Акция</a></div>
+                </div>
             </div>
         </div>
     </div>
-    {% endblock menu %}
+{% endblock menu %}
 
-    {% block content %}
+{% block content %}
     <div class="clearfix"></div>
 
     <!-- masterslider -->
@@ -37,7 +36,8 @@
         <div class="ms-slide slide-1" data-delay="9">
             <div class="slide-pattern"></div>
 
-            <img src="{% static 'js/masterslider/blank.gif' %}" data-src="{% static 'images/sliders/masterslider/masterslider-1.jpg' %}" alt=""/>
+            <img src="{% static 'js/masterslider/blank.gif' %}"
+                 data-src="{% static 'images/sliders/masterslider/masterslider-1.jpg' %}" alt=""/>
 
             <h3 class="ms-layer text35"
                 style="top: 180px; left:230px;"
@@ -91,7 +91,8 @@
         <div class="ms-slide slide-2" data-delay="9">
             <div class="slide-pattern"></div>
 
-            <img src="{% static 'js/masterslider/blank.gif' %}" data-src="{% static 'images/sliders/masterslider/masterslider-2.jpg' %}" alt=""/>
+            <img src="{% static 'js/masterslider/blank.gif' %}"
+                 data-src="{% static 'images/sliders/masterslider/masterslider-2.jpg' %}" alt=""/>
 
             <h3 class="ms-layer text35"
                 style="top: 180px; left:230px;"
@@ -146,7 +147,8 @@
         <div class="ms-slide slide-3" data-delay="9">
             <div class="slide-pattern"></div>
 
-            <img src="{% static 'js/masterslider/blank.gif' %}" data-src="{% static 'images/sliders/masterslider/masterslider-3.jpg' %}" alt=""/>
+            <img src="{% static 'js/masterslider/blank.gif' %}"
+                 data-src="{% static 'images/sliders/masterslider/masterslider-3.jpg' %}" alt=""/>
 
             <h3 class="ms-layer text35"
                 style="top: 180px; left:230px;"
@@ -211,7 +213,8 @@
                                     Спальни</h3>
                                 <h2 class="title2 text-white uppercase roboto-slab font-weight-3">Лофт</h2>
                             </div>
-                            <img src="{% static 'images/media/image-600-300-1.jpg' %}" alt="" class="img-responsive"/></div>
+                            <img src="{% static 'images/media/image-600-300-1.jpg' %}" alt="" class="img-responsive"/>
+                        </div>
                     </div>
                 </div>
                 <!--end item-->
@@ -224,7 +227,8 @@
                                     Мужские берлоги</h3>
                                 <h2 class="title2 text-white uppercase roboto-slab font-weight-3">Лофт</h2>
                             </div>
-                            <img src="{% static 'images/media/image-600-300-2.jpg' %}" alt="" class="img-responsive"/></div>
+                            <img src="{% static 'images/media/image-600-300-2.jpg' %}" alt="" class="img-responsive"/>
+                        </div>
                     </div>
                 </div>
                 <!--end item-->
@@ -244,24 +248,30 @@
                 <!--end title-->
 
                 {% for product in products %}
-                <div class="col-md-3 col-sm-6 bmargin">
-                    <div class="shop-product-holder">
-                        <a href="{{ product.image }}">
-                            <div class="image-holder">
-                                <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}" class="img-responsive"/>
-                            </div>
-                        </a>
+                    <div class="col-md-3 col-sm-6 bmargin">
+                        <div class="shop-product-holder">
+                            <a href="{{ product.image }}">
+                                <div class="image-holder">
+                                    <div class="hoverbox"><i class="fa fa-link"></i></div>
+                                    <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}"
+                                         class="img-responsive"/>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <h5 class="less-mar1 roboto-slab"><a href="{{ product.image }}">{{ product.name }}</a>
+                        </h5>
+                        <p>{{ product.short_desc }}</p>
+                        <h5 class="text-red-4">{{ product.price }}</h5>
+                        <br/>
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                        {% else %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'auth:login' %}">В корзину</a>
+                        {% endif %}
                     </div>
-                    <div class="clearfix"></div>
-                    <br/>
-                    <h5 class="less-mar1 roboto-slab"><a href="{{ product.image }}">{{ product.name }}</a>
-                    </h5>
-                    <p>{{ product.short_desc }}</p>
-                    <h5 class="text-red-4">{{ product.price }}</h5>
-                    <br/>
-                    <a class="btn btn-red-4 btn-small" href="#">В корзину</a></div>
-                <!--end item-->
+                    <!--end item-->
                 {% endfor %}
             </div>
         </div>
@@ -278,11 +288,15 @@
                             Кухни лофт</h1>
                         <h4 class="parallax-section-title-2 uppercase text-white">коллекция 2020</h4>
                         <br/>
-                        <p class="text-white">Изготовление кухонь в стиле лофт на заказ, производство дизайнерской мебели для кухни<span
-                                class="text-red-4">из металла, массива дерева и стекла на заказ в Москве.</span> Сегодня кухня в стиле LOFT
-                            приобретает все большую и большую популярность. Такие предложения позволяют совершенно по-новому оформить комнату.
+                        <p class="text-white">Изготовление кухонь в стиле лофт на заказ, производство дизайнерской
+                            мебели для кухни<span
+                                    class="text-red-4">из металла, массива дерева и стекла на заказ в Москве.</span>
+                            Сегодня кухня в стиле LOFT
+                            приобретает все большую и большую популярность. Такие предложения позволяют совершенно
+                            по-новому оформить комнату.
                             Стиль лофт наиболее актуален для помещений, которые изначально не предназначались для жилья.
-                            Речь идет о промышленных складах, о старых заводах и так далее. Однако «сочетание несочетаемого»
+                            Речь идет о промышленных складах, о старых заводах и так далее. Однако «сочетание
+                            несочетаемого»
                             и кухни лофт на заказ могут быть оформлены и в жилом помещении – в квартире,
                             доме, а также административных зданиях и так далее. </p>
                         <br/>
@@ -307,7 +321,8 @@
                         <a href="women-product-preview.html">
                             <div class="image-holder">
                                 <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-1.jpg' %}" alt="" class="img-responsive"/>
+                                <img src="{% static 'images/media/image-300-400-1.jpg' %}" alt=""
+                                     class="img-responsive"/>
                             </div>
                         </a>
                     </div>
@@ -326,7 +341,8 @@
                         <a href="men-product-preview.html">
                             <div class="image-holder">
                                 <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-2.jpg' %}" alt="" class="img-responsive"/>
+                                <img src="{% static 'images/media/image-300-400-2.jpg' %}" alt=""
+                                     class="img-responsive"/>
                             </div>
                         </a>
                     </div>
@@ -345,7 +361,8 @@
                         <a href="women-product-preview.html">
                             <div class="image-holder">
                                 <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-3.jpg' %}" alt="" class="img-responsive"/>
+                                <img src="{% static 'images/media/image-300-400-3.jpg' %}" alt=""
+                                     class="img-responsive"/>
                             </div>
                         </a>
                     </div>
@@ -363,7 +380,8 @@
                         <a href="men-product-preview.html">
                             <div class="image-holder">
                                 <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-4.jpg' %}" alt="" class="img-responsive"/>
+                                <img src="{% static 'images/media/image-300-400-4.jpg' %}" alt=""
+                                     class="img-responsive"/>
                             </div>
                         </a>
                     </div>
@@ -387,7 +405,8 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h3 class="uppercase roboto-slab ">ПОДПИШИТЕСЬ НА НАШИ НОВОСТИ И АКЦИИ</h3>
-                    <p class="sub-title">Мы не будем слать Вам спам каждый день, только нужная информация об акциях и скидках</p>
+                    <p class="sub-title">Мы не будем слать Вам спам каждый день, только нужная информация об акциях и
+                        скидках</p>
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12">
@@ -419,4 +438,4 @@
     </section>
     <!--end section -->
     <div class="clearfix"></div>
-    {% endblock content %}
+{% endblock content %}
