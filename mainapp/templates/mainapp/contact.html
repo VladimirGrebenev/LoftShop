@@ -1,6 +1,14 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
+{% block leftregmenu %}
+    {% include 'mainapp/includes/inc_left_reg_menu.html' %}
+{% endblock leftregmenu %}
+
+{% block rightregmenu %}
+    {% include 'mainapp/includes/inc_reg_menu.html' %}
+{% endblock rightregmenu %}
+
 {% block menu %}
     <div id="header">
         <div class="container">
