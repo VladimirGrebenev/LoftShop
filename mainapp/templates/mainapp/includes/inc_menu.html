@@ -3,7 +3,7 @@
                             class="{% if request.resolver_match.url_name == 'main' %}active{% endif %}">
         Главная</a></li>
     <li class="dropdown"><a href="{% url 'products:index' %}"
-                            class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}">
+                            class="{% if request.resolver_match.namespace == 'products' %}active{% endif %}">
         Каталог</a></li>
     <li class="dropdown"><a href="{% url 'contact' %}"
                             class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">

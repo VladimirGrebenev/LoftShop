@@ -14,7 +14,7 @@
 <head>
     <title>
         {% block title %}
-        {{ title|capfirst }}
+            {{ title|capfirst }}
         {% endblock title %}
     </title>
     <meta charset="utf-8">
@@ -43,18 +43,18 @@
 
     <!-- Stylesheets -->
     {% block css %}
-    <link rel="stylesheet" media="screen" href="{% static 'js/bootstrap/bootstrap.min.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'js/mainmenu/menu.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'css/default.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'css/layouts.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'css/shortcodes.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" media="screen" href="{% static 'css/responsive-leyouts.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'js/masterslider/style/masterslider.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Simple-Line-Icons-Webfont/simple-line-icons.css' %}"
-          media="screen"/>
-    <link rel="stylesheet" href="{% static 'css/et-line-font/et-line-font.css' %}">
-    <link rel="stylesheet" href="{% static 'css/colors/mossgreen.css' %}"/>
+        <link rel="stylesheet" media="screen" href="{% static 'js/bootstrap/bootstrap.min.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'js/mainmenu/menu.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/default.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/layouts.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/shortcodes.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" media="screen" href="{% static 'css/responsive-leyouts.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'js/masterslider/style/masterslider.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Simple-Line-Icons-Webfont/simple-line-icons.css' %}"
+              media="screen"/>
+        <link rel="stylesheet" href="{% static 'css/et-line-font/et-line-font.css' %}">
+        <link rel="stylesheet" href="{% static 'css/colors/mossgreen.css' %}"/>
     {% endblock css %}
 
     <!-- Remove the below comments to use your color option -->
@@ -106,7 +106,8 @@
             </div>
             <!--end left-->
 
-            <div class="topbar-middle-logo no-bgcolor"><a href="{% url 'main' %}"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+            <div class="topbar-middle-logo no-bgcolor"><a href="{% url 'main' %}"><img
+                    src="{% static 'images/logo.png' %}" alt=""/></a>
             </div>
             <!--end middle-->
 
@@ -121,174 +122,178 @@
     <div class="clearfix"></div>
 
     {% block menu %}
-    <!-- menu-->
+        <!-- menu-->
 
-    <!--end menu-->
+        <!--end menu-->
     {% endblock menu %}
     {% block content %}
     {% endblock content %}
 
     {% block footer %}
-    <section class="section-light sec-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 clearfix">
-                    <div class="footer-logo"><img src="{% static 'images/flogo.png' %}" alt=""/></div>
-                    <ul class="address-info-2">
-                        <li>Адресс: Новый Арбат, Москва, Российская Федерация</li>
-                         <li><i class="fa fa-phone"></i> Телефон: + 7 983 45 78 640</li>
-                        <li><i class="fa fa-fax"></i> Факс: + 7 983 45 78 640</li>
-                        <li><i class="fa fa-envelope"></i> Email: info@simpleloft.com</li>
-                        <li><i class="fa fa-envelope"></i> Email: support@simpleloft.com</li>
-                    </ul>
-                </div>
-                <!--end item-->
+        <section class="section-light sec-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 clearfix">
+                        <div class="footer-logo"><img src="{% static 'images/flogo.png' %}" alt=""/></div>
+                        <ul class="address-info-2">
+                            <li>Адресс: Новый Арбат, Москва, Российская Федерация</li>
+                            <li><i class="fa fa-phone"></i> Телефон: + 7 983 45 78 640</li>
+                            <li><i class="fa fa-fax"></i> Факс: + 7 983 45 78 640</li>
+                            <li><i class="fa fa-envelope"></i> Email: info@simpleloft.com</li>
+                            <li><i class="fa fa-envelope"></i> Email: support@simpleloft.com</li>
+                        </ul>
+                    </div>
+                    <!--end item-->
 
-                <div class="col-md-3 clearfix">
-                    <div class="item-holder">
-                        <h4 class="uppercase footer-title two less-mar3 roboto-slab">Рекомендуем</h4>
-                        <div class="footer-title-bottomstrip"></div>
-                        <div class="clearfix"></div>
-                        <div class="image-left"><img src="{% static 'images/media/image-80-80-1.jpg' %}" alt=""/></div>
-                        <div class="text-box-right">
-                            <h6 class="less-mar3 nopadding roboto-slab nopadding"><a href="#">Кухни Лофт</a></h6>
-                            <p>$12.59</p>
-                            <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
-                        </div>
-                        <div class="divider-line solid light margin"></div>
-                        <div class="clearfix"></div>
-                        <div class="image-left"><img src="{% static 'images/media/image-80-80-2.jpg' %}" alt=""/></div>
-                        <div class="text-box-right">
-                            <h6 class="less-mar3 roboto-slab nopadding"><a href="#">Посуда лофт</a></h6>
-                            <p>$12.59</p>
-                            <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                    <div class="col-md-3 clearfix">
+                        <div class="item-holder">
+                            <h4 class="uppercase footer-title two less-mar3 roboto-slab">Рекомендуем</h4>
+                            <div class="footer-title-bottomstrip"></div>
+                            <div class="clearfix"></div>
+                            <div class="image-left"><img src="{% static 'images/media/image-80-80-1.jpg' %}" alt=""/>
+                            </div>
+                            <div class="text-box-right">
+                                <h6 class="less-mar3 nopadding roboto-slab nopadding"><a href="#">Кухни Лофт</a></h6>
+                                <p>$12.59</p>
+                                <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                            </div>
+                            <div class="divider-line solid light margin"></div>
+                            <div class="clearfix"></div>
+                            <div class="image-left"><img src="{% static 'images/media/image-80-80-2.jpg' %}" alt=""/>
+                            </div>
+                            <div class="text-box-right">
+                                <h6 class="less-mar3 roboto-slab nopadding"><a href="#">Посуда лофт</a></h6>
+                                <p>$12.59</p>
+                                <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--end item-->
+                    <!--end item-->
 
-                <div class="col-md-3 clearfix">
-                    <h4 class="uppercase footer-title two less-mar3 roboto-slab">Быстрые ссылки</h4>
-                    <div class="clearfix"></div>
-                    <div class="footer-title-bottomstrip"></div>
-                    <ul class="usefull-links-2">
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Кровати лофт</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Стеллажи лофт</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Кухни лофт</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Берлоги лофт</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Столы лофт</a></li>
-                    </ul>
-                </div>
-                <!--end item-->
-
-                <div class="col-md-3 clearfix">
-                    <div class="item-holder">
-                        <h4 class="uppercase footer-title two less-mar3 roboto-slab">Популярные</h4>
+                    <div class="col-md-3 clearfix">
+                        <h4 class="uppercase footer-title two less-mar3 roboto-slab">Быстрые ссылки</h4>
+                        <div class="clearfix"></div>
                         <div class="footer-title-bottomstrip"></div>
-                        <div class="clearfix"></div>
-                        <div class="image-left"><img src="{% static 'images/media/image-80-80-2.jpg' %}" alt=""/></div>
-                        <div class="text-box-right">
-                            <h6 class="less-mar3 nopadding roboto-slab nopadding"><a href="#">Посуда Лофт</a></h6>
-                            <p>$12.59</p>
-                            <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
-                        </div>
-                        <div class="divider-line solid light margin"></div>
-                        <div class="clearfix"></div>
-                        <div class="image-left"><img src="{% static 'images/media/image-80-80-1.jpg' %}" alt=""/></div>
-                        <div class="text-box-right">
-                            <h6 class="less-mar3 roboto-slab nopadding"><a href="#">Кухни Лофт</a></h6>
-                            <p>$12.59</p>
-                            <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
-                                    class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                        <ul class="usefull-links-2">
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Кровати лофт</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Стеллажи лофт</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Кухни лофт</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Берлоги лофт</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i> Столы лофт</a></li>
+                        </ul>
+                    </div>
+                    <!--end item-->
+
+                    <div class="col-md-3 clearfix">
+                        <div class="item-holder">
+                            <h4 class="uppercase footer-title two less-mar3 roboto-slab">Популярные</h4>
+                            <div class="footer-title-bottomstrip"></div>
+                            <div class="clearfix"></div>
+                            <div class="image-left"><img src="{% static 'images/media/image-80-80-2.jpg' %}" alt=""/>
+                            </div>
+                            <div class="text-box-right">
+                                <h6 class="less-mar3 nopadding roboto-slab nopadding"><a href="#">Посуда Лофт</a></h6>
+                                <p>$12.59</p>
+                                <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                            </div>
+                            <div class="divider-line solid light margin"></div>
+                            <div class="clearfix"></div>
+                            <div class="image-left"><img src="{% static 'images/media/image-80-80-1.jpg' %}" alt=""/>
+                            </div>
+                            <div class="text-box-right">
+                                <h6 class="less-mar3 roboto-slab nopadding"><a href="#">Кухни Лофт</a></h6>
+                                <p>$12.59</p>
+                                <div class="footer-post-info"><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
+                                        class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--end item-->
+                    <!--end item-->
 
-            </div>
-        </div>
-    </section>
-    <!--end section-->
-    <div class="clearfix"></div>
-
-    <section class="section-copyrights section-white-2 sec-moreless-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 bmargin">
-                    <ul class="payment-type">
-                        <li>Принимаем</li>
-                        <li><img src="{% static 'images/media/591.jpg' %}" alt=""/></li>
-                        <li><img src="{% static 'images/media/592.jpg' %}" alt=""/></li>
-                        <li><img src="{% static 'images/media/593.jpg' %}" alt=""/></li>
-                        <li><img src="{% static 'images/media/594.jpg' %}" alt=""/></li>
-                        <li><img src="{% static 'images/media/595.jpg' %}" alt=""/></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 bmargin"><span>Copyright © {% now 'Y' %} <a
-                        href="https://www.veneberg81.ru/">обращаться</a> к <a
-                        href="https://www.veneberg81.ru/">veneberg81.ru</a> | Все права защищены.</span></div>
-                <div class="col-md-3 bmargin">
-                    <ul class="social-icons-3 dark-2 no-margin-left pull-right">
-                        <li class="first"><a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vk"></i></a></li>
-                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--end section-->
-    <div class="clearfix"></div>
+        </section>
+        <!--end section-->
+        <div class="clearfix"></div>
 
-    <a href="#" class="scrollup red-4"></a><!-- end scroll to top of the page-->
-</div>
-<!-- end site wraper -->
+        <section class="section-copyrights section-white-2 sec-moreless-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 bmargin">
+                        <ul class="payment-type">
+                            <li>Принимаем</li>
+                            <li><img src="{% static 'images/media/591.jpg' %}" alt=""/></li>
+                            <li><img src="{% static 'images/media/592.jpg' %}" alt=""/></li>
+                            <li><img src="{% static 'images/media/593.jpg' %}" alt=""/></li>
+                            <li><img src="{% static 'images/media/594.jpg' %}" alt=""/></li>
+                            <li><img src="{% static 'images/media/595.jpg' %}" alt=""/></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 bmargin"><span>Copyright © {% now 'Y' %} <a
+                            href="https://www.veneberg81.ru/">обращаться</a> к <a
+                            href="https://www.veneberg81.ru/">veneberg81.ru</a> | Все права защищены.</span></div>
+                    <div class="col-md-3 bmargin">
+                        <ul class="social-icons-3 dark-2 no-margin-left pull-right">
+                            <li class="first"><a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--end section-->
+        <div class="clearfix"></div>
+
+        <a href="#" class="scrollup red-4"></a><!-- end scroll to top of the page-->
+        </div>
+        <!-- end site wraper -->
     {% endblock footer %}
 
 
 {% block js %}
-<!-- ============ JS FILES ============ -->
-<script type="text/javascript" src="{% static 'js/universal/jquery.js' %}"></script>
-<script src="{% static 'js/bootstrap/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/masterslider/jquery.easing.min.js' %}"></script>
-<script src="{% static 'js/masterslider/masterslider.min.js' %}"></script>
-<script type="text/javascript">
-    (function ($) {
-        "use strict";
-        var slider = new MasterSlider();
-        // adds Arrows navigation control to the slider.
-        slider.control('arrows');
-        slider.control('bullets');
+    <!-- ============ JS FILES ============ -->
+    <script type="text/javascript" src="{% static 'js/universal/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/masterslider/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/masterslider/masterslider.min.js' %}"></script>
+    <script type="text/javascript">
+        (function ($) {
+            "use strict";
+            var slider = new MasterSlider();
+            // adds Arrows navigation control to the slider.
+            slider.control('arrows');
+            slider.control('bullets');
 
-        slider.setup('masterslider', {
-            width: 1600,    // slider standard width
-            height: 630,   // slider standard height
-            space: 0,
-            speed: 45,
-            layout: 'fullwidth',
-            loop: true,
-            preload: 0,
-            autoplay: true,
-            view: "parallaxMask"
-        });
+            slider.setup('masterslider', {
+                width: 1600,    // slider standard width
+                height: 630,   // slider standard height
+                space: 0,
+                speed: 45,
+                layout: 'fullwidth',
+                loop: true,
+                preload: 0,
+                autoplay: true,
+                view: "parallaxMask"
+            });
 
-    })(jQuery);
-</script>
-<script src="{% static 'js/mainmenu/customeUI.js' %}"></script>
-<script src="{% static 'js/scrolltotop/totop.js' %}"></script>
-<script src="{% static 'js/mainmenu/jquery.sticky.js' %}"></script>
-<script src="{% static 'js/pagescroll/animatescroll.js' %}"></script>
+        })(jQuery);
+    </script>
+    <script src="{% static 'js/mainmenu/customeUI.js' %}"></script>
+    <script src="{% static 'js/scrolltotop/totop.js' %}"></script>
+    <script src="{% static 'js/mainmenu/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/pagescroll/animatescroll.js' %}"></script>
 
-<script src="{% static 'js/scripts/functions.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/scripts/functions.js' %}" type="text/javascript"></script>
 {% endblock js %}
 </body>
 </html>
