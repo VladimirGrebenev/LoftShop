@@ -55,12 +55,6 @@
               media="screen"/>
         <link rel="stylesheet" href="{% static 'css/et-line-font/et-line-font.css' %}">
         <link rel="stylesheet" href="{% static 'css/colors/mossgreen.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="js/tabs/assets/css/responsive-tabs.css">
-
-        <link rel="stylesheet" href="{% static 'js/product-preview/stylesheet.css' %}">
-        <link rel="stylesheet" href="{% static 'js/product-preview/fancybox/jquery.fancybox.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'js/smart-forms/smart-forms.css' %}">
-
     {% endblock css %}
 
     <!-- Remove the below comments to use your color option -->
@@ -272,7 +266,6 @@
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/masterslider/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/masterslider/masterslider.min.js' %}"></script>
-    <script src="{% static 'js/product-preview/fancybox/jquery.fancybox.js' %}"></script>
     <script type="text/javascript">
         (function ($) {
             "use strict";
@@ -295,36 +288,14 @@
 
         })(jQuery);
     </script>
-    <script>
-        $(document).ready(function () {
-            $('.product_preview_left .previews a').on("click", function () {
-                var largeImage = $(this).attr('data-full');
-                $('.selected').removeClass();
-                $(this).addClass('selected');
-                $('.full img').hide();
-                $('.full img').attr('src', largeImage);
-                $('.full img').fadeIn();
-
-
-            }); // closing the listening on a click
-            $('.full img').on("click", function () {
-                var modalImage = $(this).attr('src');
-                $.fancybox.open(modalImage);
-            });
-        }); //closing our doc ready
-    </script>
     <script src="{% static 'js/mainmenu/customeUI.js' %}"></script>
     <script src="{% static 'js/scrolltotop/totop.js' %}"></script>
     <script src="{% static 'js/mainmenu/jquery.sticky.js' %}"></script>
     <script src="{% static 'js/pagescroll/animatescroll.js' %}"></script>
-    <script src="{% static 'js/scripts/functions.js' %}" type="text/javascript"></script>
 
-    <script src="{% static 'js/tabs/assets/js/responsive-tabs.min.js' %}" type="text/javascript"></script>
-    <script type="text/javascript" src="{% static 'js/smart-forms/jquery.form.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/smart-forms/jquery.validate.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/smart-forms/additional-methods.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/smart-forms/smart-form.js' %}"></script>
-    <script src="{% static 'js/scripts/functions.js" type="text/javascript' %}"></script>
+    <script src="{% static 'js/scripts/functions.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/basket_script.js' %}"></script>
 {% endblock js %}
 </body>
 </html>

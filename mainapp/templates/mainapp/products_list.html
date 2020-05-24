@@ -67,7 +67,7 @@
                     {% for product in products %}
                         <div class="col-md-4 col-sm-6 bmargin pmargin">
                             <div class="shop-product-holder">
-                                <a href="{% url 'products:index' %}">
+                                <a href="{% url 'products:product' product.pk %}">
                                     <div class="image-holder">
                                         <div class="hoverbox"><i class="fa fa-link"></i></div>
                                         <img src="{{ media_url }}{{ product.image }}"
@@ -77,10 +77,10 @@
                             </div>
                             <div class="clearfix"></div>
                             <br/>
-                            <h5 class="less-mar1 roboto-slab"><a href="{{ product.image }}">{{ product.name }}</a>
+                            <h5 class="less-mar1 roboto-slab"><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
                             </h5>
                             <p>{{ product.short_desc }}</p>
-                            <h5 class="text-red-4">{{ product.price }}</h5>
+                            <h5 class="text-red-4">{{ product.price }}<span> &#8381</span></h5>
                             <br/>
                             {% if user.is_authenticated %}
                                 <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>

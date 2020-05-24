@@ -1,0 +1,51 @@
+{% extends 'basketapp/base.html' %}
+{% load static %}
+
+{% block leftregmenu %}
+    {% include 'mainapp/includes/inc_left_reg_menu.html' %}
+{% endblock leftregmenu %}
+
+{% block rightregmenu %}
+    {% include 'mainapp/includes/inc_reg_menu.html' %}
+{% endblock rightregmenu %}
+
+{% block menu %}
+    <div id="header">
+        <div class="container">
+            <div class="navbar red-2 navbar-default yamm">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid"
+                            class="navbar-toggle two three"><span class="icon-bar"></span><span class="icon-bar"></span><span
+                            class="icon-bar"></span></button>
+                </div>
+                <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+                    {% include 'mainapp/includes/inc_menu.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock menu %}
+
+{% block content %}
+<div class="h3 text-center head">
+    Корзина
+</div>
+<br>
+<div class="short_space_login" style="
+    width: 800px !important;
+    text-align: left !important;
+    display: block !important;
+    margin: auto !important;
+">
+    <div class="basket_list">
+        {% include 'basketapp/includes/inc_basket_list.html' %}
+    </div>
+    <br>
+    <button class="btn btn-red-4 btn-small">
+        <a href="{% url 'main' %}" style="color: white !important;">
+            на главную
+        </a>
+    </button>
+</div>
+<br>
+{% endblock content %}

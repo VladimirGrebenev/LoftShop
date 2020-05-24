@@ -1,0 +1,159 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block leftregmenu %}
+    {% include 'mainapp/includes/inc_left_reg_menu.html' %}
+{% endblock leftregmenu %}
+
+{% block rightregmenu %}
+    {% include 'mainapp/includes/inc_reg_menu.html' %}
+{% endblock rightregmenu %}
+
+{% block menu %}
+    <div id="header">
+        <div class="container">
+            <div class="navbar red-2 navbar-default yamm">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid"
+                            class="navbar-toggle two three"><span class="icon-bar"></span><span class="icon-bar"></span><span
+                            class="icon-bar"></span></button>
+                </div>
+                <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+                    {% include 'mainapp/includes/inc_menu.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end menu-->
+{% endblock menu %}
+
+{% block content %}
+    <div class="site_wrapper">
+        <section>
+            <div class="pagenation-holder">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>{{ product.category }}</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="pagenation_links"><a href="{% url 'main' %}">Главная</a><i>/</i> {{ product.category|title }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--end section-->
+        <div class="clearfix"></div>
+
+        <section class="sec-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="product_preview_left bmargin">
+                            <div class="gallery">
+                                <div class="full">
+                                    <!-- first image is viewable to start -->
+                                    <img style="max-block-size: 99%" src="{{ media_url }}{{ product.image }}" alt=""/></div>
+                                <div class="previews">
+
+                                    <a class="selected" data-full="{{ media_url }}{{ product.image }}"><img
+                                            src="http://placehold.it/120x130" alt=""/></a>
+                                    <a data-full="{{ media_url }}{{ product.image }}"><img src="http://placehold.it/120x130"
+                                                                                     alt=""/></a>
+                                    <a data-full="{{ media_url }}{{ product.image }}"><img src="http://placehold.it/120x130"
+                                                                                     alt=""/></a>
+                                    <a data-full="{{ media_url }}{{ product.image }}"><img src="http://placehold.it/120x130"
+                                                                                     alt=""/></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end left-->
+
+                    <div class="col-md-6 col-sm-12 col-xs-12 bmargin">
+                        <h3 class=" raleway">{{ product.name }}</h3>
+                        <div class="divider-line solid light opacity-6"></div>
+                        <br/>
+                        <div class="col-md-8 col-sm-6">
+                            <h3 class="text-red-4">{{ product.price }} <span> &#8381</span></h3>
+                        </div>
+                        <div class="col-md-4 col-sm-6 text-right product-review-stars"><span><i class="fa fa-star"></i></span><span><i
+                                class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i
+                                class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><br/>
+                            (24 customer reviews)
+                        </div>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <p>{{ product.description }}</p>
+                        <br/>
+                        <a class="btn btn-red-4 less-padding" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <br/>
+                        <ul class="product-details">
+                            <li><span>Артикул продукта | ID :</span> {{ product.pk }}</li>
+                            <li><span>Категория  :</span> {{ product.category }}</li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <br/>
+                        <ul class="product-info-socialicons">
+                            <li><a class="twitter" href="#"><i
+                                    class="fa fa-twitter"></i></a></li>
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="in" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--end item-->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <div class="clearfix"></div>
+
+        <section class="sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <h4 class="section-title-7"><span class="roboto-slab uppercase">Популярные товары</span></h4>
+                </div>
+                <!--end title-->
+
+                {% for product in same_products %}
+                    <div class="col-md-3 col-sm-6 bmargin">
+                        <div class="shop-product-holder">
+                            <a href="{% url 'products:product' product.pk %}">
+                                <div class="image-holder">
+                                    <div class="hoverbox"><i class="fa fa-link"></i></div>
+                                    <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}"
+                                         class="img-responsive"/>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <h5 class="less-mar1 roboto-slab"><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
+                        </h5>
+                        <p>{{ product.short_desc }}</p>
+                        <h5 class="text-red-4">{{ product.price }}<span> &#8381</span></h5>
+                        <br/>
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                        {% else %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'auth:login' %}">В корзину</a>
+                        {% endif %}
+                    </div>
+                    <!--end item-->
+                {% endfor %}
+            <div class="clearfix"></div>
+                <!--end item-->
+
+            </div>
+        </div>
+    </section>
+    </div>
+{% endblock content %}
