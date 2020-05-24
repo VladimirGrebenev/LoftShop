@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 from basketapp.models import Basket
-from mainapp.models import Product
+from mainapp.models import Product, ProductCategory
 
 from mainapp.views import get_basket
 
@@ -16,7 +16,8 @@ def basket(request):
     title = "корзина"
     basket_items = Basket.objects.filter(user=request.user).order_by("product__category")
     content = {"title": title, "basket_items": basket_items, "media_url": settings.MEDIA_URL,
-               "project_settings": settings, "basket": get_basket(request.user), }
+               "project_settings": settings, "basket": get_basket(request.user),
+               "links_menu": ProductCategory.objects.all(), }
     return render(request, "basketapp/basket.html", content)
 
 
@@ -57,7 +58,8 @@ def basket_edit(request, pk, quantity):
 
         basket_items = Basket.objects.filter(user=request.user).order_by("product__category")
 
-        content = {"basket_items": basket_items, "media_url": settings.MEDIA_URL, "basket": get_basket(request.user), }
+        content = {"basket_items": basket_items, "media_url": settings.MEDIA_URL,
+                   "basket": get_basket(request.user), "links_menu": ProductCategory.objects.all(),}
 
         result = render_to_string("basketapp/includes/inc_basket_list.html", content)
 
