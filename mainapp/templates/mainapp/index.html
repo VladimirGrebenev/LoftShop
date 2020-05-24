@@ -250,7 +250,7 @@
                 {% for product in products %}
                     <div class="col-md-3 col-sm-6 bmargin">
                         <div class="shop-product-holder">
-                            <a href="{{ product.image }}">
+                            <a href="{% url 'products:product' product.pk %}">
                                 <div class="image-holder">
                                     <div class="hoverbox"><i class="fa fa-link"></i></div>
                                     <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}"
@@ -260,10 +260,10 @@
                         </div>
                         <div class="clearfix"></div>
                         <br/>
-                        <h5 class="less-mar1 roboto-slab"><a href="{{ product.image }}">{{ product.name }}</a>
+                        <h5 class="less-mar1 roboto-slab"><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
                         </h5>
                         <p>{{ product.short_desc }}</p>
-                        <h5 class="text-red-4">{{ product.price }}</h5>
+                        <h5 class="text-red-4">{{ product.price }}<span> &#8381</span></h5>
                         <br/>
                         {% if user.is_authenticated %}
                             <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
@@ -316,82 +316,32 @@
                 </div>
                 <!--end title-->
 
-                <div class="col-md-3 col-sm-6 bmargin">
-                    <div class="shop-product-holder">
-                        <a href="women-product-preview.html">
-                            <div class="image-holder">
-                                <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-1.jpg' %}" alt=""
-                                     class="img-responsive"/>
-                            </div>
-                        </a>
+                {% for product in same_products %}
+                    <div class="col-md-3 col-sm-6 bmargin">
+                        <div class="shop-product-holder">
+                            <a href="{% url 'products:product' product.pk %}">
+                                <div class="image-holder">
+                                    <div class="hoverbox"><i class="fa fa-link"></i></div>
+                                    <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}"
+                                         class="img-responsive"/>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br/>
+                        <h5 class="less-mar1 roboto-slab"><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
+                        </h5>
+                        <p>{{ product.short_desc }}</p>
+                        <h5 class="text-red-4">{{ product.price }}<span> &#8381</span></h5>
+                        <br/>
+                        {% if user.is_authenticated %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                        {% else %}
+                            <a class="btn btn-red-4 btn-small" href="{% url 'auth:login' %}">В корзину</a>
+                        {% endif %}
                     </div>
-                    <div class="clearfix"></div>
-                    <br/>
-                    <h5 class="less-mar1 roboto-slab"><a href="women-product-preview.html">Диван Медведь</a>
-                    </h5>
-                    <p>Комплект Берлога Сибирская</p>
-                    <h5 class="text-red-4">$ 25.00–$ 29.00</h5>
-                    <br/>
-                    <a class="btn btn-red-4 btn-small" href="#">В корзину</a></div>
-                <!--end item-->
-
-                <div class="col-md-3 col-sm-6 bmargin">
-                    <div class="shop-product-holder">
-                        <a href="men-product-preview.html">
-                            <div class="image-holder">
-                                <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-2.jpg' %}" alt=""
-                                     class="img-responsive"/>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <br/>
-                    <h5 class="less-mar1 roboto-slab"><a href="men-product-preview.html">Барная стойка Дуб</a></h5>
-                    <p>Идеальный вариант для вашей кухни</p>
-                    <h5 class="text-red-4">$ 25.00–$ 29.00</h5>
-                    <br/>
-                    <a class="btn btn-red-4 btn-small" href="#">В корзину</a></div>
-                <!--end item-->
-
-                <div class="col-md-3 col-sm-6 bmargin">
-
-                    <div class="shop-product-holder">
-                        <a href="women-product-preview.html">
-                            <div class="image-holder">
-                                <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-3.jpg' %}" alt=""
-                                     class="img-responsive"/>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <br/>
-                    <h5 class="less-mar1 roboto-slab"><a href="women-product-preview.html">Обеденный стол</a></h5>
-                    <p>Коллекция "В большой семье ..."</p>
-                    <h5 class="text-red-4">$ 25.00–$ 29.00</h5>
-                    <br/>
-                    <a class="btn btn-red-4 btn-small" href="#">В корзину</a></div>
-                <!--end item-->
-
-                <div class="col-md-3 col-sm-6 bmargin">
-                    <div class="shop-product-holder">
-                        <a href="men-product-preview.html">
-                            <div class="image-holder">
-                                <div class="hoverbox"><i class="fa fa-link"></i></div>
-                                <img src="{% static 'images/media/image-300-400-4.jpg' %}" alt=""
-                                     class="img-responsive"/>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <br/>
-                    <h5 class="less-mar1 roboto-slab"><a href="men-product-preview.html">Полка "что надо"</a></h5>
-                    <p>Не то что надо, а нужно!</p>
-                    <h5 class="text-red-4">$ 25.00–$ 29.00</h5>
-                    <br/>
-                    <a class="btn btn-red-4 btn-small" href="#">В корзину</a></div>
+                    <!--end item-->
+                {% endfor %}
                 <!--end item-->
 
             </div>

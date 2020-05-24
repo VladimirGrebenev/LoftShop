@@ -1,4 +1,4 @@
-{% extends 'authnapp/base.html' %}
+{% extends 'basketapp/base.html' %}
 {% load static %}
 
 {% block leftregmenu %}
@@ -27,26 +27,25 @@
 {% endblock menu %}
 
 {% block content %}
-    <div class="h3 text-center head">
-                Войти в магазин
-            </div>
-    <div class="short_space_login"  style="
-    width: 300px !important;
-    text-align: center !important;
+<div class="h3 text-center head">
+    Корзина
+</div>
+<br>
+<div class="short_space_login" style="
+    width: 800px !important;
+    text-align: left !important;
     display: block !important;
     margin: auto !important;
 ">
-
-        <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
-            {% csrf_token %}
-            {{ login_form.as_p }}
-            <br>
-            <input class="form-control" type="submit" value="войти">
-        </form>
-        <button class="btn btn-round form-control">
-            <a href="{% url 'auth:register' %}" class="">
-                зарегистрироваться
-            </a>
-        </button>
+    <div class="basket_list">
+        {% include 'basketapp/includes/inc_basket_list.html' %}
     </div>
+    <br>
+    <button class="btn btn-red-4 btn-small">
+        <a href="{% url 'main' %}" style="color: white !important;">
+            на главную
+        </a>
+    </button>
+</div>
+<br>
 {% endblock content %}

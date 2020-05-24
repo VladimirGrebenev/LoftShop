@@ -24,6 +24,8 @@
 <br/>
 <a href="{% url 'basket:view' %}" class="dropdown-toggle pull-right btn btn-red btn-xround fa fa-shopping-cart">
     <span>
-        {% if basket %}{{ basket|length }}{% endif %}
+        {% if basket %}
+            {{ basket.0.total_cost|floatformat:0 }} &#8381 ({{ basket.0.total_quantity }} шт)
+        {% endif %}
     </span>
 </a>

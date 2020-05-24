@@ -6,8 +6,19 @@ from basketapp.models import Basket
 
 from .models import Product, ProductCategory, Contact
 
+import random
+
 
 # Create your views here.
+def get_hot_product():
+    products = Product.objects.all()
+    return random.sample(list(products), 1)[0]
+
+
+def get_same_products(hot_product):
+    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:4]
+    return same_products
+
 
 def main(request):
     title = "главная"
@@ -21,9 +32,19 @@ def main(request):
         # print(f'basket / _basket: {len(_basket)} / {len(basket)}')
 
     products = Product.objects.all()[:4]
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
 
-    content = {"title": title, "products": products, "media_url": settings.MEDIA_URL, "basket": basket, "links_menu": links_menu,}
+    content = {"title": title, "products": products, "media_url": settings.MEDIA_URL, "basket": basket,
+               "links_menu": links_menu, "hot_product": hot_product, "same_products": same_products,}
     return render(request, "mainapp/index.html", content)
+
+
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
 
 
 def products(request, pk=None):
@@ -54,13 +75,18 @@ def products(request, pk=None):
         }
         return render(request, "mainapp/products_list.html", content)
 
-    same_products = Product.objects.all()
+    products = Product.objects.all()
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
+
     content = {
         "title": title,
         "links_menu": links_menu,
         "same_products": same_products,
+        "products": products,
         "media_url": settings.MEDIA_URL,
         "basket": basket,
+        "hot_product": hot_product,
     }
 
     if pk:
@@ -81,5 +107,21 @@ def contact(request):
 
     visit_date = timezone.now()
     locations = Contact.objects.all()
-    content = {"title": title, "visit_date": visit_date, "locations": locations, "basket": basket, "links_menu": links_menu,}
+    content = {"title": title, "visit_date": visit_date, "locations": locations, "basket": basket,
+               "links_menu": links_menu, }
     return render(request, "mainapp/contact.html", content)
+
+def product(request, pk):
+    title = "товары"
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
+    content = {
+        "title": title,
+        "links_menu": ProductCategory.objects.all(),
+        "product": get_object_or_404(Product, pk=pk),
+        "basket": get_basket(request.user),
+        "media_url": settings.MEDIA_URL,
+        "hot_product": hot_product,
+        "same_products": same_products,
+    }
+    return render(request, "mainapp/product.html", content)

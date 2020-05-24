@@ -3,6 +3,7 @@ from django.contrib import auth
 from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 
+from mainapp.models import ProductCategory
 from authnapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegisterForm
 
 
@@ -19,7 +20,7 @@ def login(request):
             auth.login(request, user)
             return HttpResponseRedirect(reverse("main"))
 
-    content = {"title": title, "login_form": login_form}
+    content = {"title": title, "login_form": login_form, "links_menu": ProductCategory.objects.all(), }
     return render(request, "authnapp/login.html", content)
 
 
@@ -40,7 +41,7 @@ def register(request):
     else:
         register_form = ShopUserRegisterForm()
 
-    content = {"title": title, "register_form": register_form}
+    content = {"title": title, "register_form": register_form, "links_menu": ProductCategory.objects.all(), }
     return render(request, "authnapp/register.html", content)
 
 
@@ -55,5 +56,6 @@ def edit(request):
     else:
         edit_form = ShopUserEditForm(instance=request.user)
 
-    content = {"title": title, "edit_form": edit_form, "media_url": settings.MEDIA_URL}
+    content = {"title": title, "edit_form": edit_form, "media_url": settings.MEDIA_URL,
+               "links_menu": ProductCategory.objects.all(), }
     return render(request, "authnapp/edit.html", content)
