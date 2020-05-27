@@ -7,6 +7,7 @@ class ProductCategory(models.Model):
     '''Категория товара'''
     name = models.CharField(verbose_name="имя категории", max_length=64, unique=True)
     description = models.TextField(verbose_name="описание категории", blank=True)
+    is_active = models.BooleanField(verbose_name="категория активна", default=True)
 
     def __str__(self):
         return self.name
