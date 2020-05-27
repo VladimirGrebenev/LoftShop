@@ -1,8 +1,13 @@
 <ul class="toplist toppadding">
     {% if user.is_authenticated %}
-    <li class="lineright"><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a></li>
+        <li class="lineright"><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a></li>
     {% endif %}
     {% if user.is_authenticated %}
-    <li class="lineright"><a href="{% url 'auth:logout' %}">Выйти</a></li>
+        <li class="lineright"><a href="{% url 'auth:logout' %}">Выйти</a></li>
+    {% endif %}
+    {% if user.is_superuser %}
+        <li>
+            <a href="{% url 'admin:users' %}">Админка</a>
+        </li>
     {% endif %}
 </ul>
