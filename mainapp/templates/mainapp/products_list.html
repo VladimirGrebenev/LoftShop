@@ -50,7 +50,8 @@
                         <h3>{{ category.name|title }}</h3>
                     </div>
                     <div class="col-md-6 text-right">
-                        <div class="pagenation_links"><a href="{% url 'main' %}">Главная</a><i>/</i> {{ category.name|title }}</div>
+                        <div class="pagenation_links"><a
+                                href="{% url 'main' %}">Главная</a><i>/</i> {{ category.name|title }}</div>
                     </div>
                 </div>
             </div>
@@ -63,7 +64,22 @@
         <div class="container">
             <div class="row">
                 <!--products-->
+
                 <div class="col-md-9">
+                    <div class="paginator">
+                        {% if products.has_previous %}
+                            <a href="{% url 'products:page' category.pk products.previous_page_number %}"><i
+                                    class="btn btn-default fa fa-caret-left" style="padding: 4px 9px;"></i></a>
+                        {% endif %}
+                        <span class="current">
+                    &nbsp; страница {{ products.number }} из {{ products.paginator.num_pages }} &nbsp;
+                </span>
+                        {% if products.has_next %}
+                            <a href="{% url 'products:page' category.pk products.next_page_number %}"><i
+                                    class="btn btn-default fa fa-caret-right" style="padding: 4px 9px;"></i></a>
+                        {% endif %}
+                    </div>
+                    <br>
                     {% for product in products %}
                         <div class="col-md-4 col-sm-6 bmargin pmargin">
                             <div class="shop-product-holder">
@@ -77,19 +93,36 @@
                             </div>
                             <div class="clearfix"></div>
                             <br/>
-                            <h5 class="less-mar1 roboto-slab"><a href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
+                            <h5 class="less-mar1 roboto-slab"><a
+                                    href="{% url 'products:product' product.pk %}">{{ product.name }}</a>
                             </h5>
                             <p>{{ product.short_desc }}</p>
                             <h5 class="text-red-4">{{ product.price }}<span> &#8381</span></h5>
                             <br/>
                             {% if user.is_authenticated %}
-                                <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В корзину</a>
+                                <a class="btn btn-red-4 btn-small" href="{% url 'basket:add' product.pk %}">В
+                                    корзину</a>
                             {% else %}
                                 <a class="btn btn-red-4 btn-small" href="{% url 'auth:login' %}">В корзину</a>
                             {% endif %}
                         </div>
                         <!--end item-->
                     {% endfor %}
+                    <div>
+                        {% if products.has_previous %}
+                            <a href="{% url 'products:page' category.pk products.previous_page_number %}"><i
+                                    class="btn btn-default fa fa-caret-left" style="padding: 4px 9px;"></i></a>
+                        {% endif %}
+                        <span class="current">
+                    &nbsp; страница {{ products.number }} из {{ products.paginator.num_pages }} &nbsp;
+                </span>
+                        {% if products.has_next %}
+                            <a href="{% url 'products:page' category.pk products.next_page_number %}"><i
+                                    class="btn btn-default fa fa-caret-right" style="padding: 4px 9px;"></i></a>
+                        {% endif %}
+                    </div>
+                    <br>
+
                 </div>
 
 
