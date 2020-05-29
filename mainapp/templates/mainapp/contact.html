@@ -1,5 +1,5 @@
 {% extends 'mainapp/base.html' %}
-{% load static %}
+{% load static mail_to phone_to%}
 
 {% block leftregmenu %}
     {% include 'mainapp/includes/inc_left_reg_menu.html' %}
@@ -78,11 +78,11 @@
                                     <h4>{{ location.city }}</h4>
                                     <div>
                                         <h5>Телефон</h5>
-                                        <p>{{ location.phone }}</p>
+                                        <p>{{ location.phone|phone_to }}</p>
                                     </div>
                                     <div>
                                         <h5>Email</h5>
-                                        <p>{{ location.email }}</p>
+                                        <p>{{ location.email|mail_to }}</p>
                                     </div>
                                     <div>
                                         <h5>Адрес</h5>
